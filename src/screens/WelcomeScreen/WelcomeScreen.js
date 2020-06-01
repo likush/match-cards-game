@@ -1,19 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled, { withTheme } from 'styled-components';
+import UserNameIsNotExistContent from './components/UserNameIsNotExistContent';
+import UserNameIsExistContent from './components/UserNameIsExistContent';
+import BaseButton from '../../components/BaseButton';
+import BaseLink from '../../components/BaseLink';
+import SelectSettingsContent from './components/SelectSettingsContent';
 import bg from '../../img/bg/welcome-screen-bg.jpg';
 
-
 const WelcomeScreen = (props) => {
+  const {theme: {colors}} = props;
   const userName = useSelector(state => state.userData.userName);
-
   return (
     <Container>
       <Inner>
-        <Content>
-          <Title>Welcome</Title>
-          <Input placeholder={'Введите имя'}/>
-        </Content>
+        <UserContent>
+          {userName ? <UserNameIsExistContent/> : <UserNameIsNotExistContent/>}
+        </UserContent>
+
+        <SelectSettingsContent/>
+
+        <BaseLink to={'settings'} color={colors.green}>
+          <NextBtn onClick={() => console.log('click')}>
+            Start game
+          </NextBtn>
+        </BaseLink>
       </Inner>
     </Container>
   );
@@ -23,44 +34,34 @@ export default withTheme(WelcomeScreen);
 
 const Container = styled.div`
   height: 100vh;
-  background-color: ${({theme}) => theme.colors.lightgray};
-  background-image:url(${bg});
-  background-size: cover;
-  background-position: bottom;
-`;
-
-const Inner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  background: rgba(33, 47, 60, .5);
+  background-color: ${({theme}) => theme.colors.lightgray};
+  background-image:url(${bg});
+  background-size: cover;
 `;
 
-const Content = styled.div`
-
+const UserContent = styled.div`
+  margin-bottom: 40px;
 `;
 
-const Title = styled.p`
-  margin: 0 0 20px 0;
+const Inner = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const NextBtn = styled(BaseButton)`
+  padding: 20px 30px;
+  border-color: ${({theme}) => theme.colors.tangerine};
+  background-color:  ${({theme}) => theme.colors.tangerine};
   color: white;
-  font-size: 1.8rem;
-  text-align: center;
-`;
 
-const Input = styled.input`
-  padding: 10px;
-  width: 300px;
-  border-radius: 8px;
-  border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.4);
-  transition: 0.3s ease all;
-  
-  
-  &:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.8);
+  &:hover {
+    transform: scale(1.1);
+    background-color:  ${({theme}) => theme.colors.coral};
+    border-color: ${({theme}) => theme.colors.coral};
   }
 `;
 

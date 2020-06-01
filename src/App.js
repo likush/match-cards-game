@@ -7,9 +7,10 @@ const App = () => {
   const userData = useSelector(state => state.userData);
 
   return (
-    <div>
-      {userData.userName ? <PrivateRoutes/> : <PublicRoutes/>}
-    </div>
+    <PrivateRoutes/>
+    // <div>
+    //   {userData.userName ? <PrivateRoutes/> : <PublicRoutes/>}
+    // </div>
   );
 };
 
