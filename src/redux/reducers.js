@@ -17,8 +17,8 @@ function userData (state = userDataInitialState, action) {
 
 const initialGameSettings = {
   difficulty: 12,
-  shirt: '',
-  theme: 'flowers'
+  theme: 'cats',
+  shirt: 'peach',
 };
 
 function gameSettings (state = initialGameSettings, action) {

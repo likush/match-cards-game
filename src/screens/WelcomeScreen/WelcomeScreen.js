@@ -11,21 +11,27 @@ import bg from '../../img/bg/welcome-screen-bg.jpg';
 const WelcomeScreen = (props) => {
   const {theme: {colors}} = props;
   const userName = useSelector(state => state.userData.userName);
+
+  const settings = useSelector(state => state.gameSettings);
+
+  console.log(settings);
   return (
     <Container>
-      <Inner>
-        <UserContent>
-          {userName ? <UserNameIsExistContent/> : <UserNameIsNotExistContent/>}
-        </UserContent>
+      <Wrapper>
+        <Inner>
+          <UserContent>
+            {userName ? <UserNameIsExistContent/> : <UserNameIsNotExistContent/>}
+          </UserContent>
 
-        <SelectSettingsContent/>
+          <SelectSettingsContent/>
 
-        <BaseLink to={'settings'} color={colors.green}>
-          <NextBtn onClick={() => console.log('click')}>
-            Start game
-          </NextBtn>
-        </BaseLink>
-      </Inner>
+          <BaseLink to={'settings'} color={colors.green}>
+            <NextBtn onClick={() => console.log('click')}>
+              Start game
+            </NextBtn>
+          </BaseLink>
+        </Inner>
+      </Wrapper>
     </Container>
   );
 };
@@ -34,13 +40,20 @@ export default withTheme(WelcomeScreen);
 
 const Container = styled.div`
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
   background-color: ${({theme}) => theme.colors.lightgray};
   background-image:url(${bg});
   background-size: cover;
 `;
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 246, 246, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `;
 
 const UserContent = styled.div`
   margin-bottom: 40px;
@@ -54,14 +67,14 @@ const Inner = styled.div`
 
 const NextBtn = styled(BaseButton)`
   padding: 20px 30px;
-  border-color: ${({theme}) => theme.colors.tangerine};
-  background-color:  ${({theme}) => theme.colors.tangerine};
+  border-color: ${({theme}) => theme.colors.coral};
+  background-color:  ${({theme}) => theme.colors.coral};
   color: white;
 
   &:hover {
     transform: scale(1.1);
-    background-color:  ${({theme}) => theme.colors.coral};
-    border-color: ${({theme}) => theme.colors.coral};
+      background-color:  ${({theme}) => theme.colors.darkcoral};
+
   }
 `;
 

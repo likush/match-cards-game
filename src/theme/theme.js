@@ -6,6 +6,7 @@ const theme = {
     // lavender rgb: (104, 93, 115)
     purple: '#b57581',
     coral: '#e5888b',
+    darkcoral: '#de686c',
     tangerine: '#ffaa97',
     peach: '#ffbea0',
     green: '#00a896'
