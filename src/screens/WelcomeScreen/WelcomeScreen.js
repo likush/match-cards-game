@@ -12,9 +12,6 @@ const WelcomeScreen = (props) => {
   const {theme: {colors}} = props;
   const userName = useSelector(state => state.userData.userName);
 
-  const settings = useSelector(state => state.gameSettings);
-
-  console.log(settings);
   return (
     <Container>
       <Wrapper>

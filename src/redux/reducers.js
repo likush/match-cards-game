@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_USERNAME, SELECT_SHIRT, SELECT_THEME, SELECT_DIFFICULTY, SELECT_LANG} from './actions';
+import { SET_USERNAME, SELECT_SHIRT, SELECT_THEME, SELECT_LEVEL, SELECT_LANG} from './actions';
 
 const userName = localStorage.getItem('userName') || '';
 const userDataInitialState = {userName, lang: 'en'};
@@ -16,15 +16,15 @@ function userData (state = userDataInitialState, action) {
 }
 
 const initialGameSettings = {
-  difficulty: 12,
+  level: 12,
   theme: 'cats',
   shirt: 'peach',
 };
 
 function gameSettings (state = initialGameSettings, action) {
   switch (action.type) {
-    case SELECT_DIFFICULTY:
-      return {...state, difficulty: action.difficulty};
+    case SELECT_LEVEL:
+      return {...state, level: action.level};
     case SELECT_SHIRT:
       return {...state, shirt: action.shirt};
     case SELECT_THEME:

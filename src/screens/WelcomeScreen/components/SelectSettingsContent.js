@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { withTheme, css } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTheme, selectDifficulty, selectShirt } from '../../../redux/actions';
+import { selectTheme, selectLevel, selectShirt } from '../../../redux/actions';
 import BaseButton from '../../../components/BaseButton';
 import peachShirt from '../../../img/card-shirts/peach-shirt.jpg';
 import greenShirt from '../../../img/card-shirts/green-shirt.jpg';
@@ -14,7 +14,7 @@ const levels = [{title: '3 ✕ 4', value: 12}, {title: '4 ✕ 4', value: 16}, {t
 const SelectSettingsContent = (props) => {
 
   const gameSettings = useSelector(state => state.gameSettings);
-  const {difficulty, shirt, theme} = gameSettings;
+  const {level, shirt, theme} = gameSettings;
   const dispatch = useDispatch();
 
   console.log(gameSettings);
@@ -40,8 +40,8 @@ const SelectSettingsContent = (props) => {
             <SelectBtnWrap>
               {levels.map(({title, value}, index) =>
                 <SelectBtn
-                  onClick={() => dispatch(selectDifficulty(value))}
-                  selected={difficulty === value}
+                  onClick={() => dispatch(selectLevel(value))}
+                  selected={level === value}
                   key={value + index}>
                   {title}
                 </SelectBtn>)}
