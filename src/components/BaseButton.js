@@ -23,11 +23,13 @@ const Btn = styled.button`
   ${({ disabled, theme: {colors} }) =>
   disabled &&
   css`
-      border-color: ${colors.gray} !important;
+      border-color: ${colors.lightgray} !important;
+      background-color: ${colors.lightgray} !important;
       color:  ${colors.gray} !important;
+      cursor: auto;
       
       &:hover {
-        background-color: transparent !important;
+        background-color: ${colors.lightgray} !important;
         color: ${colors.gray} !important;
       }
       

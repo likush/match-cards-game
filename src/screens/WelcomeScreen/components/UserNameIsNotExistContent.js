@@ -43,51 +43,27 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled.input`
-  padding: 10px;
+  padding: 10px 0;
   margin-right: 10px;
   width: 300px;
   border: none;
   border-bottom: ${({theme}) => `1px solid ${theme.colors.lavender}`};
   transition: 0.3s ease all;
   background-color: transparent;
+  color: ${({theme}) => theme.colors.lavender}}
   
   &:focus {
     outline: none;
   }
 `;
 
-const SaveBtnText = styled.span`
-  color: ${({theme}) => theme.colors.lavender};
-  transition: 0.3s ease all;
-`;
-
 const SaveBtn = styled(BaseButton)`
   padding: 0 20px;
   border-color: ${({theme}) => theme.colors.lavender};
+  color: ${({theme}) => theme.colors.lavender};
   
   &:hover {
     background-color: ${({theme}) => theme.colors.lavender};
-  }
-  
-  &:hover ${SaveBtnText} {
-    color: white;
-  }
-`;
-
-const GoToSettingsBtnText = styled.span`
-  color: ${({theme}) => theme.colors.green};
-`;
-
-const GoToSettingsBtn = styled(BaseButton)`
-  width: 150px;
-  padding: 10px 0;
-  border-color:  ${({theme}) => theme.colors.green};
-  
-  &:hover {
-    background-color: ${({theme}) => theme.colors.green};
-  }
-  
-  &:hover ${GoToSettingsBtnText} {
     color: white;
   }
 `;

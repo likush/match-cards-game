@@ -1,6 +1,6 @@
 const theme = {
   colors: {
-    lightgray: '#E5E7E9',
+    lightgray: '#D3D3D3',
     gray: '#808080',
     lavender: '#775c81',
     // lavender rgb: (104, 93, 115)

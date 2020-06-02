@@ -1,4 +1,5 @@
 import React from 'react';
+import styled, { withTheme } from 'styled-components';
 import { useSelector } from 'react-redux';
 
 const UserNameIsExistContent = (props) => {
@@ -6,10 +7,15 @@ const UserNameIsExistContent = (props) => {
 
   return (
     <div>
-      <h1>{`Hi, ${userName}`}</h1>
+      <Title>{`Hi, ${userName}`}</Title>
     </div>
 
   );
 };
 
-export default UserNameIsExistContent;
+export default withTheme(UserNameIsExistContent);
+
+const Title = styled.h1`
+  font-family: Comfortaa, serif;
+  color: ${({theme}) => theme.colors.lavender}
+`;

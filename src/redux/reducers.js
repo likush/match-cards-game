@@ -7,6 +7,7 @@ const userDataInitialState = {userName, lang: 'en'};
 function userData (state = userDataInitialState, action) {
   switch (action.type) {
     case SET_USERNAME:
+      localStorage.setItem('userName', action.value)
       return {...state, userName: action.value};
     case SELECT_LANG:
       return {...state, lang: action.lang};
