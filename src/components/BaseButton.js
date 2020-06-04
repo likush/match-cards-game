@@ -20,7 +20,7 @@ const Btn = styled.button`
   cursor: pointer;
   background-color: transparent;
   
-  ${({ disabled, theme: {colors} }) =>
+  ${({disabled, theme: {colors}}) =>
   disabled &&
   css`
       border-color: ${colors.lightgray} !important;
@@ -31,9 +31,11 @@ const Btn = styled.button`
       &:hover {
         background-color: ${colors.lightgray} !important;
         color: ${colors.gray} !important;
+        cursor: default;
+        transform: scale(1) !important;
       }
       
-    `}
+    `};
   
   &:focus {
     outline: none;

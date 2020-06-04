@@ -23,7 +23,7 @@ const WelcomeScreen = (props) => {
           <SelectSettingsContent/>
 
           <BaseLink to={'settings'} color={colors.green}>
-            <NextBtn onClick={() => console.log('click')}>
+            <NextBtn disabled={!userName}>
               Start game
             </NextBtn>
           </BaseLink>
@@ -70,7 +70,7 @@ const NextBtn = styled(BaseButton)`
 
   &:hover {
     transform: scale(1.1);
-      background-color:  ${({theme}) => theme.colors.darkcoral};
+    background-color:  ${({theme}) => theme.colors.darkcoral};
 
   }
 `;

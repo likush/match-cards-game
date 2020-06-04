@@ -8,13 +8,18 @@ const UserNameIsNotExistContent = () => {
   const dispatch = useDispatch();
   const [inputValue, changeInputValue] = useState('');
 
+  const saveUserName = () => {
+    localStorage.setItem('userName', inputValue);
+    dispatch(setUserName(inputValue));
+  };
+
   return (
     <Content>
       <Title>Hi</Title>
       <InputWrapper>
         <Input onChange={(ev) => changeInputValue(ev.target.value)}
                placeholder={'Enter your name'}/>
-        <SaveBtn onClick={() => dispatch(setUserName(inputValue))}
+        <SaveBtn onClick={saveUserName}
                  disabled={!inputValue}>Save</SaveBtn>
       </InputWrapper>
     </Content>

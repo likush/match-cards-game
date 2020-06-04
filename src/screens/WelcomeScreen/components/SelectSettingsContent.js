@@ -17,8 +17,6 @@ const SelectSettingsContent = (props) => {
   const {level, shirt, theme} = gameSettings;
   const dispatch = useDispatch();
 
-  console.log(gameSettings);
-
   return (
     <Container>
       <Title>Select:</Title>
