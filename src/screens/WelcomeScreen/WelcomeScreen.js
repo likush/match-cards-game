@@ -37,7 +37,6 @@ export default withTheme(WelcomeScreen);
 
 const Container = styled.div`
   height: 100vh;
-  
   background-color: ${({theme}) => theme.colors.lightgray};
   background-image:url(${bg});
   background-size: cover;

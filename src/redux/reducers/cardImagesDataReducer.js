@@ -1,6 +1,6 @@
 import { GET_IMAGES_STARTED, GET_IMAGES_SUCCESS } from '../actions';
 
-function cardImagesReducer (state = {images: [], isLoading: false}, action) {
+function cardImagesDataReducer (state = {images: [], isLoading: false}, action) {
   switch (action.type) {
     case GET_IMAGES_STARTED:
       return {...state, isLoading: true};
@@ -11,4 +11,4 @@ function cardImagesReducer (state = {images: [], isLoading: false}, action) {
   }
 }
 
-export default cardImagesReducer;
+export default cardImagesDataReducer;

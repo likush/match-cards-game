@@ -1,5 +1,5 @@
 import Unsplash from 'unsplash-js';
-
+import store from './store';
 const accessKey = 'ce9ac8116b5a943a4f1251c058525b1c78f76b585b72510fe36113aee9a6e42c';
 
 // user data actions
@@ -32,18 +32,21 @@ export const getImages = () => {
     dispatch(getImagesStarted());
 
     const unsplash = new Unsplash({accessKey});
+    const gameSettings = store.getState().gameSettings;
+    const numberOfImages = gameSettings.level / 2;
 
-    const getPhotos = async () => {
-      const response = await unsplash.search.photos('cats', 1, 10, {orientation: "portrait"});
+    const getData = async () => {
+      const response = await unsplash.search.photos(gameSettings.theme, 1, numberOfImages, {orientation: "portrait"});
 
       if (response.ok) {
         const data = await response.json();
-        const images = data.results.map(image => ({id: image.id, url: image.urls.small}));
+        const temp = data.results.map(image => ({id: image.id, url: image.urls.small}));
+        const images = [...temp, ...temp].sort(() => Math.random() - 0.5);
         dispatch(getImagesSuccess(images));
       }
     };
 
-    getPhotos();
+    getData();
   };
 };
 
