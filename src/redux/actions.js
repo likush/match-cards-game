@@ -43,6 +43,8 @@ export const getImages = () => {
         const temp = data.results.map(image => ({id: image.id, url: image.urls.small}));
         const images = [...temp, ...temp].sort(() => Math.random() - 0.5);
         dispatch(getImagesSuccess(images));
+      } else {
+        dispatch(getImagesFailed('Something went wrong'));
       }
     };
 
@@ -54,4 +56,4 @@ const getImagesStarted = () => ({type: GET_IMAGES_STARTED});
 
 const getImagesSuccess = data => ({type: GET_IMAGES_SUCCESS, data});
 
-// const getImagesFailed = error => ({type: GET_IMAGES_FAILED, payload: {error}});
+const getImagesFailed = error => ({type: GET_IMAGES_FAILED, error});

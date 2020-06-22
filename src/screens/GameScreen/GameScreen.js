@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled, { withTheme } from 'styled-components';
-import { getImages, SELECT_LEVEL, SELECT_SHIRT, SELECT_THEME } from '../../redux/actions';
+import { getImages } from '../../redux/actions';
+import ScreenLoader from '../../components/ScreenLoader';
 import Card from '../../components/Card';
 import bg from '../../img/bg/game-bg.jpg';
-
 
 const GameScreen = () => {
   const dispatch = useDispatch();
   const gameSettings = useSelector(state => state.gameSettings);
   const {level} = gameSettings;
   const imagesData = useSelector(state => state.cardImagesData);
-  const {images} = imagesData;
+  const {images, isLoading} = imagesData;
 
   useEffect(() => dispatch(getImages()), [dispatch]);
+
+  console.log(images);
 
   const getGameFieldParams = () => {
     if (level === 12) {
@@ -29,10 +31,12 @@ const GameScreen = () => {
 
   return (
     <Container>
-      {images.length > 0 &&
-      <GameField params={fieldParams}>
-        {images.map((image, index) => <Card key={image.id + index}/>)}
-      </GameField>}
+      <ScreenLoader isLoading={isLoading}>
+        {images.length > 0 &&
+        <GameField params={fieldParams}>
+          {images.map((image, index) => <Card key={image.id + index}/>)}
+        </GameField>}
+      </ScreenLoader>
     </Container>
   );
 };
