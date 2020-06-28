@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { withTheme, css } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTheme, selectLevel, selectShirt } from '../../../redux/actions';
+import { selectTheme, selectLevel, selectShirt } from '../../../redux/actions/gameSettingsActions';
 import BaseButton from '../../../components/BaseButton';
 import peachShirt from '../../../img/card-shirts/peach-shirt.jpg';
 import greenShirt from '../../../img/card-shirts/green-shirt.jpg';
@@ -11,11 +11,12 @@ const shirts = [{value: 'peach', bg: peachShirt}, {value: 'green', bg: greenShir
 const themes = [{title: 'Cats', value: 'cats'}, {title: 'Nature', value: 'nature'}, {title: 'City', value: 'city'}];
 const levels = [{title: '3 ✕ 4', value: 12}, {title: '4 ✕ 4', value: 16}, {title: '4 ✕ 5', value: 20},];
 
-const SelectSettingsContent = (props) => {
-
+const SelectSettingsContent = () => {
   const gameSettings = useSelector(state => state.gameSettings);
   const {level, shirt, theme} = gameSettings;
   const dispatch = useDispatch();
+
+  console.log(gameSettings)
 
   return (
     <Container>

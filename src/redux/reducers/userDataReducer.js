@@ -1,4 +1,4 @@
-import { SELECT_LANG, SET_USERNAME } from '../actions';
+import { SELECT_LANG, SET_USERNAME } from '../actions/userDataActions';
 
 
 const userName = localStorage.getItem('userName') || '';

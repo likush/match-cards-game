@@ -1,4 +1,4 @@
-import { SELECT_LEVEL, SELECT_SHIRT, SELECT_THEME } from '../actions';
+import { SELECT_LEVEL, SELECT_SHIRT, SELECT_THEME } from '../actions/gameSettingsActions';
 
 const initialState = {
   level: 12,

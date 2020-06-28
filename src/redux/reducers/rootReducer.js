@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
-import cardImagesDataReducer from './cardImagesDataReducer';
+import cardsDataReducer from './cardsDataReducer';
 import userDataReducer from './userDataReducer';
 import gameSettingsReducer from './gameSettingsReducer';
-
+import currentGameDataReducer from './currentGameDataReducer';
 
 const rootReducer = combineReducers({
   userData: userDataReducer,
   gameSettings: gameSettingsReducer,
-  cardImagesData: cardImagesDataReducer
+  cardsData: cardsDataReducer,
+  currentGameData: currentGameDataReducer
 });
 
 export default rootReducer;
