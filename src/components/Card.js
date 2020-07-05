@@ -2,18 +2,21 @@ import React from 'react';
 import styled, { withTheme, css } from 'styled-components';
 import { getCardShirt } from '../utils/getCardShirt';
 import { useSelector, useDispatch } from 'react-redux';
-import { openCard } from '../redux/actions/currentGameDataActions';
+import { checkIsCardOpen } from '../redux/actions/cardsDataActions';
 
 const Card = (props) => {
-  const {cardId, imageId, url} = props;
+  const {cardId, imageId, url, isMatched} = props;
   const dispatch = useDispatch();
   const shirtName = useSelector(state => state.gameSettings.shirt);
   const shirt = getCardShirt(shirtName);
-  const openedCards = useSelector(state => state.currentGameData.openedCards);
+  const openedCards = useSelector(state => state.cardsData.openedCards);
   const isOpened = openedCards[cardId] === imageId;
+  const isCardDisabled = Object.keys(openedCards).length === 2;
+
 
   return (
-    <CardContainer onClick={() => dispatch(openCard(cardId, imageId))}>
+    <CardContainer onClick={() => dispatch(checkIsCardOpen(cardId, imageId))} isMatched={isMatched}
+                   disabled={isCardDisabled}>
       <CardInner isOpened={isOpened}>
         <CardFront shirt={shirt}/>
 
@@ -46,6 +49,15 @@ const CardInner = styled.div`
 
 const CardContainer = styled.div`
   perspective: 1000px;
+  transition: 0.3s ease all;
+  pointer-events: ${({disabled}) => disabled ? 'none' : 'all'};
+
+  ${({isMatched}) =>
+  isMatched &&
+  css`
+      opacity: 0;
+    `}
+  }
 `;
 
 const CardSide = styled.div`

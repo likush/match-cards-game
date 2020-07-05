@@ -1,9 +1,9 @@
 import { SELECT_LEVEL, SELECT_SHIRT, SELECT_THEME } from '../actions/gameSettingsActions';
 
 const initialState = {
-  level: 12,
-  theme: 'cats',
-  shirt: 'peach',
+  level: 20,
+  theme: 'city',
+  shirt: 'green',
 };
 
 function gameSettingsReducer (state = initialState, action) {
